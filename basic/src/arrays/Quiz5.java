@@ -7,13 +7,7 @@ public class Quiz5 {
 
 		for (int i = 0; i < 6; i++) {
 			arr[i] = (int)(Math.random() * 45) + 1;
-// 작성하다가 만 코드;;
-//			if(i >= 1) {
-//				int data = arr[i];
-//				for(int j = 0; )
-//				
-//				
-//			}
+
 			// 중복 제거
 			for(int j = 0; j < i; j++) {
 				if(arr[j] == arr[i]) {
