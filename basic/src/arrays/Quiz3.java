@@ -24,7 +24,6 @@ public class Quiz3 {
 		System.out.print("배열 데이터: ");
 		for(int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i] + " ");
-			
 		}
 		System.out.println("입니다.");
 		

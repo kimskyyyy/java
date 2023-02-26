@@ -14,28 +14,35 @@ public class Quiz4 {
 	 */
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		
-		System.out.println("월 일 입력: ");
-		int month = sc.nextInt();
-		int day = sc.nextInt();
-		int totalDay = 0;
-		int result = 0;
-		
-		String[] week = {"금요일", "토요일", "일요일", "월요일", "화요일", "수요일", "목요일"};		
-		
-		for(int i = 1; i < month; i++) { // N월 전까지 일수 구하기 
-			if(i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12) {
-				totalDay += 31;
-			} else if(i == 4 || i == 6 || i == 9 || i == 11) {
-				totalDay += 30;
-			} else {				// 2월
-				totalDay += 28;			
-			}				
+
+		String[] week = {"금요일", "토요일", "일요일", "월요일", "화요일", "수요일", "목요일"};	// 	1월 1일이 토요일이라 금요일을 인덱스 0에 배치함
+		int [] month = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		int mon, day, totalDay = 0;
+
+
+		while(true) {
+			System.out.println("월 일 입력: ");
+
+			try {
+				mon = sc.nextInt();
+				day = sc.nextInt();
+
+			} catch (Exception e) {
+				System.out.println("날짜를 확인해주세요.");
+				continue;
+			}
+
+			if (mon >= 1 && mon <= 12 && day >= 1 && day <= month[mon-1])
+				break;
+		}
+
+		for(int i = 0; i < mon-1; i++) {
+			totalDay += month[i];
 		}
 		
 		totalDay += day;
-		result = totalDay % 7;
-		System.out.println(month + "월 " + day + "일 " + week[result]);		
+		int result = totalDay % 7;
+		System.out.println(mon + "월 " + day + "일 " + week[result]);
 		
 	}
 

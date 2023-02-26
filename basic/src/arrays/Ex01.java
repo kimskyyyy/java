@@ -1,10 +1,13 @@
 package arrays;
 
+import java.util.Arrays;
+
 public class Ex01 {
 
 	public static void main(String[] args) {
 		int[] ints1 = new int[5];
 		System.out.println("ints1: " + ints1);
+		System.out.println("ints1: " + Arrays.toString(ints1));
 		
 		int[] ints2 = new int[] {1, 2, 3, 4, 5};
 		System.out.println("ints2: " + ints2);
@@ -22,8 +25,10 @@ public class Ex01 {
 		System.out.println("strs1: " + strs1);
 		
 		String[] strs2 = new String[] {"111", "222", "333"};
+		System.out.println(strs2);
+
 		String[] strs3 = {"111", "222", "333"};
-		
+		System.out.println(strs3);
 		
 		
 		
