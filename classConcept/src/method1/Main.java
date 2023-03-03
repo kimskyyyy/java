@@ -9,7 +9,7 @@ public class Main {
 		ArrayList<String> list = new ArrayList<>(); // 필요 시 메모리에 올려서 사용
 		list.add("asd");
 		
-		Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in); // cf. Sanner()는 기본생성자 없음
 		sc.next();
 		
 		Random r = new Random();
@@ -26,7 +26,7 @@ public class Main {
 		sub.method03(); // 가능하나 warning, static 메서드이므로 Sub.method03(); 로 호출하는 것을 권장
 		
 		
-		// println()으로 다형성 
+		// println() 다형성
 		System.out.println();
 		System.out.println(10);
 		System.out.println('a');
