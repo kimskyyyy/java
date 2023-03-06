@@ -15,14 +15,14 @@ public class Main {
 		Random r = new Random();
 		r.nextInt();
 		
-		Math.random(); // static 메서드(프로그램 시작부터 끝까지, 자주사용되는 것들)
+		Math.random(); // static 메서드(프로그램 시작부터 끝까지 메모리에 올라와있음, 자주사용되는 것들)
 		System.out.println();
 		
 		Sub.method03();
 		
 		Sub sub = new Sub();
 		sub.method01();
-		sub.method02();
+		sub.method02(); // 필요 시 메모리에 올려서 사용(부하가 생길 수 있으나 메모리 공간을 차지하지 않는 장점이 있음)
 		sub.method03(); // 가능하나 warning, static 메서드이므로 Sub.method03(); 로 호출하는 것을 권장
 		
 		

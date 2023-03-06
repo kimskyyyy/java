@@ -128,7 +128,7 @@ public class Quiz2 {
 		
 		boolean result1 = true;
 		for(i = 2; i < data; i++) {
-			System.out.println(data + " % " + i + " = " + (data % i));
+//			System.out.println(data + " % " + i + " = " + (data % i));
 			if(data % i == 0)
 				result1 = false;
 		}
