@@ -1,6 +1,5 @@
 package method2;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class MemberMain {
