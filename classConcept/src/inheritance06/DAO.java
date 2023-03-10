@@ -31,6 +31,13 @@ public class DAO implements IDAO{
 	public DTO selectId(int index) {
 		return members.get(index);
 	}
+	
+	// 3. 회원삭제
+	@Override
+	public void delete(int index) {
+		members.remove(index);
+		
+	}
 
 	// 4. 회원 전체 검색
 	@Override
@@ -47,12 +54,7 @@ public class DAO implements IDAO{
 		
 	}
 
-	// 3. 회원삭제
-	@Override
-	public void delete(int index) {
-		members.remove(index);
-		
-	}
+
 
 	// 현재 비밀번호와 일치 확인
 	@Override

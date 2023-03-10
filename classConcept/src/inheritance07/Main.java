@@ -1,4 +1,4 @@
-package inheritance06;
+package inheritance07;
 
 import java.util.Scanner;
 
@@ -15,10 +15,8 @@ public class Main {
 		 * 6.프로그램 종료 : 프로그램을 종료함.
 		 */
 		Scanner sc = new Scanner(System.in);
-		String id;
 		Service service = new Service();
-		
-		
+		String id;
 		while(true) {
 			System.out.println("1. 회원 등록");
 			System.out.println("2. 회원 검색");
@@ -32,25 +30,23 @@ public class Main {
 			case "1": System.out.println(" === 회원 등록 === ");
 					System.out.print("아이디 : "); id = sc.next();
 					System.out.print("비밀번호 : "); String pw = sc.next();
-					System.out.print("이름 : "); String name = sc.next();					
+					System.out.print("이름 : "); String name = sc.next();
 					service.insert(id, pw, name);
-					
-					break;					
+					break;
 			case "2": System.out.println(" === 회원 검색 === ");
-					System.out.print("아이디 : "); id = sc.next();					
-					service.select(id);
-					
+					System.out.print("아이디 : "); id = sc.next();
+					service.selectId(id);
 					break;
 			case "3": System.out.println(" === 회원 삭제 === ");
-					System.out.print("아이디 : "); id = sc.next();					
-					service.delete(id);
+					System.out.print("아이디 : "); id = sc.next();
+					service.remove(id);
 					break;
-			case "4": service.selectAll();  break;
+			case "4": service.findAll(); break;
 			case "5": System.out.println(" === 비밀번호 수정 === ");
 					System.out.print("아이디 : "); id = sc.next();
 					System.out.print("현재 비밀번호 : "); String currentPw = sc.next();
 					System.out.print("변경 비밀번호 : "); String changePw = sc.next();
-					service.update(id, currentPw, changePw);
+					service.updatePassword(id, currentPw, changePw);
 					break;
 			case "6": System.out.println("프로그램을 종료합니다."); System.exit(0);
 			default:  System.out.println("메뉴 확인 후 다시 입력하세요.");
