@@ -43,7 +43,7 @@ public class ConnTest {
 		 */
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		try {
-			DriverManager.getConnection(url, id, password);
+			con = DriverManager.getConnection(url, id, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

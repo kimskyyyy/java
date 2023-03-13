@@ -23,17 +23,13 @@ public class SelectAll {
 			con = DriverManager.getConnection(url, id, password);
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-//			if(rs.next()) {
-//				System.out.println("아이디: " + rs.getString("id"));
-//				System.out.println("비밀번호: " + rs.getShort("pw"));
-//				System.out.println("이름: " +  rs.getString("name"));
-//				System.out.println("회원번호: " + rs.getInt("member_num"));
-//			}
+
 			while(rs.next()) {
 				System.out.println("아이디: " + rs.getString("id"));
 				System.out.println("비밀번호: " + rs.getString("pw"));
 				System.out.println("이름: " +  rs.getString("name"));
 				System.out.println("회원번호: " + rs.getInt("member_num"));
+				System.out.println();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
