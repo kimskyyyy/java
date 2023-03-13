@@ -64,11 +64,12 @@ public class ConnTest {
 		try {
 			// 아직 DB로 명령문을 전달하지 않음
 			ps = con.prepareStatement(sql);
-			
-			// DB로 명령문 전달
+						
 			ps.setString(1, userId);
 			ps.setString(2, userPw);
 			ps.setString(3, userName);
+			
+			// DB로 명령문 전달
 			ps.executeUpdate(); // INSERT, UPDATE, DELETE
 			// SELECT -> ps.executeQuery(); 결과값 반환
 			
