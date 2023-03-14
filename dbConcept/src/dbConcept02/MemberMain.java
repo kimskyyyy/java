@@ -2,6 +2,8 @@ package dbConcept02;
 
 import java.util.Scanner;
 
+import dbConcept02A.MemberDaoImpl;
+
 public class MemberMain {
 	
 	public static void main(String[] args) {

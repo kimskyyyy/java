@@ -1,9 +1,30 @@
 package dbConcept02A;
-
+/*
+  db_concept 테이블 생성
+  - 회원번호, 이메일, 이름, 전화번호
+  
+  CREATE TABLE db_concept(
+	num number,
+	email varchar2(100),
+	name varchar2(20),
+	mobile varchar2(20),
+	PRIMARY KEY(email)
+	);
+	
+	COMMIT;
+ */
 public class MemberDTO {
+	private int num;
 	private String email;
 	private String name;
 	private String mobile;
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	
 	public String getEmail() {
 		return email;
