@@ -1,17 +1,16 @@
 package dbConcept03.view;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-import dbConcept03.dao.MemberDAO;
 import dbConcept03.dto.MemberDTO;
+import dbConcept03.service.MemberService;
 
 
 public class MemberView implements IView{
 	Scanner in = new Scanner(System.in);
 	String id = "", pw = "", name="", email="";
 	MemberDTO member = null;
-	MemberDAO memberDao = new MemberDAO();
+	MemberService memberService = new MemberService();
 
 	@Override
 	public void mainMenu() {		
@@ -35,7 +34,7 @@ public class MemberView implements IView{
 			case 3: insertMember(); break;
 			case 4: updateMember(); break;
 			case 5: deleteMember(); break;
-			case 0: memberDao.exit();
+			case 0: memberService.exit();
 			System.out.println("프로그램을 종료합니다.");
 			System.exit(0);
 				
@@ -47,44 +46,21 @@ public class MemberView implements IView{
 	@Override
 	public void deleteMember() {
 		System.out.println("=== 회원 정보 삭제 ===");
-		System.out.print("아이디 : "); id = in.next();
-		member = memberDao.selectId(id);
-		if(member == null) {
-			System.out.println("미등록 정보입니다.");
-		}else {
-			int result = memberDao.deleteMember(id);
-			if(result == 1)
-				System.out.println("정보가 삭제되었습니다.");
-			else
-				System.out.println("정상적으로 처리되지 않습니다. 다시 시도하세요.");
-		}
+		System.out.print("아이디: "); id = in.next();
+		System.out.print("패스워드:"); pw = in. next();
 		
+		memberService.deleteMember(id, pw);		
 	}
 
 	@Override
 	public void updateMember() {
 		System.out.println("=== 회원 정보 변경 ===");
 		System.out.print("아이디 : "); id = in.next();
-		System.out.println("패스워드 : "); pw = in.next();
+		System.out.print("패스워드 : "); pw = in.next();
 		System.out.print("이름 : ");	name = in.next();
 		System.out.print("이메일 : "); email = in.next();
-		member = memberDao.selectId(id);
-		if(member == null) {
-			System.out.println("미등록 정보입니다.");
-		}else {
-			member = new MemberDTO();
-			member.setId(id);
-			member.setPw(pw);
-			member.setName(name);
-			member.setEmail(email);
-			int result = memberDao.updateMember(member);
-			
-			if(result == 1)
-				System.out.println("정보가 수정되었습니다.");
-			else
-				System.out.println("수정이 정상적으로 처리되지 않습니다. 다시 시도하세요.");
-		}
 		
+		memberService.updateMember(id, pw, name, email);		
 	}
 
 	@Override
@@ -95,19 +71,7 @@ public class MemberView implements IView{
 		System.out.print("이름 : ");	name = in.next();
 		System.out.print("이메일 : "); email = in.next();
 		
-		member = memberDao.selectId(id);
-		if(member == null) {
-			member = new MemberDTO();
-			member.setId(id);
-			member.setPw(pw);
-			member.setName(name);
-			member.setEmail(email);
-			
-			memberDao.insertMember(member);
-			System.out.println("회원 등록이 되었습니다.");
-		}else {
-			System.out.println("등록된 정보입니다.");
-		}
+		memberService.insertMember(id, pw, name, email);
 		
 	}
 
@@ -115,36 +79,13 @@ public class MemberView implements IView{
 	public void selectId() {
 		System.out.println("=== 회원 정보 조회 ===");
 		System.out.print("아이디 : "); id = in.next();
-		member = memberDao.selectId(id);
-		if(member == null) {
-			System.out.println("미등록 정보입니다.");
-		}else {
-			System.out.println("회원번호 : " + member.getNum());
-			System.out.println("아이디: " + member.getId());
-			System.out.println("패스워드: " + member.getPw());
-			System.out.println("이름 : " + member.getName());
-			System.out.println("이메일 : " + member.getEmail());
-
-		}
 		
+		memberService.selectId(id);
 	}
 
 	@Override
 	public void selectAll() {
-		ArrayList<MemberDTO> members = memberDao.selectAll(); 
-		if(members.isEmpty() == false) {
-			for(MemberDTO m : members) {
-				System.out.println("회원번호 : " + m.getNum());
-				System.out.println("아이디: " + m.getId());
-				System.out.println("패스워드: " + m.getPw());
-				System.out.println("이름 : " + m.getName());
-				System.out.println("이메일 : " + m.getEmail());
-				System.out.println();
-			}
-		}else {
-			System.out.println("등록된 정보가 없습니다.");
-		}
-		System.out.println();
+		memberService.selectAll();
 		
 	}
 

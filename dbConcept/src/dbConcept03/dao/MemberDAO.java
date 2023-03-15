@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import dbConcept03.dto.MemberDTO;
 
 public class MemberDAO implements IDao {
-private Connection con;
-	
+	private Connection con;
+
 	public MemberDAO() {
 		String user = "douzone";
 		String password = "oracle";
@@ -34,7 +34,7 @@ private Connection con;
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
 			rs = ps.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				MemberDTO member = new MemberDTO();
 				member.setNum(rs.getInt("num"));
 				member.setId(rs.getString("id"));
@@ -58,9 +58,9 @@ private Connection con;
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-			if(rs.next()) {
-				member.setNum(rs.getInt("max_num"));//rs.getInt("max_num");
-			}else {
+			if (rs.next()) {
+				member.setNum(rs.getInt("max_num"));// rs.getInt("max_num");
+			} else {
 				member.setNum(0);
 			}
 			sql = "INSERT INTO db_concept3 VALUES(?, ?, ?, ?, ?)";
@@ -69,7 +69,7 @@ private Connection con;
 			ps.setString(2, member.getId());
 			ps.setString(3, member.getPw());
 			ps.setString(4, member.getName());
-			ps.setString(5, member.getEmail());			
+			ps.setString(5, member.getEmail());
 
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -80,45 +80,45 @@ private Connection con;
 	@Override
 	public ArrayList<MemberDTO> selectAll() {
 		PreparedStatement ps = null;
-		String sql = "SELECT * FROM db_concept3";
+		String sql = "SELECT * FROM db_concept3 ORDER BY num";
 		ResultSet rs = null;
 		ArrayList<MemberDTO> members = new ArrayList<MemberDTO>();
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				MemberDTO member = new MemberDTO();
 				member.setNum(rs.getInt("num"));
 				member.setId(rs.getString("id"));
 				member.setPw(rs.getString("pw"));
 				member.setName(rs.getString("name"));
 				member.setEmail(rs.getString("email"));
-				
+
 				members.add(member);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return members;
-		
+
 	}
 
 	@Override
 	public int updateMember(MemberDTO member) {
-		String sql = "UPDATE db_concept3 SET id = ?, pw = ?, name = ?, email = ? WHERE id = ?";
+		String sql = "UPDATE db_concept3 SET pw = ?, name = ?, email = ? WHERE id = ?";
 		PreparedStatement ps = null;
 		int result = 0;
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, member.getId());
-			ps.setString(2, member.getPw());
-			ps.setString(3, member.getName());
-			ps.setString(4, member.getEmail());
+			ps.setString(1, member.getPw());
+			ps.setString(2, member.getName());
+			ps.setString(3, member.getEmail());
+			ps.setString(4, member.getId());
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
 
@@ -134,14 +134,13 @@ private Connection con;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
 
-	
 	public void exit() {
 		try {
-			if(con != null)
+			if (con != null)
 				con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
