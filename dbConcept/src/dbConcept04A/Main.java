@@ -2,12 +2,12 @@ package dbConcept04A;
 
 import java.util.Scanner;
 
-import dbConcept04A.MemberDAO;
-import dbConcept04A.RegisterRequest;
-import dbConcept04A.ChangePasswordService;
-import dbConcept04A.MemberAllService;
-import dbConcept04A.MemberDeleteService;
-import dbConcept04A.MemberRegisterService;
+//import dbConcept04A.MemberDAO;
+//import dbConcept04A.RegisterRequest;
+//import dbConcept04A.ChangePasswordService;
+//import dbConcept04A.MemberAllService;
+//import dbConcept04A.MemberDeleteService;
+//import dbConcept04A.MemberRegisterService;
 
 public class Main {
 	private static MemberDAO memberDao = new MemberDAO();
@@ -20,6 +20,7 @@ public class Main {
 			System.out.println("명령어를 입력하세요");
 			System.out.print("> ");
 			String command = sc.nextLine();
+			sc.close();
 			
 			if(command.equalsIgnoreCase("exit")){
 				memberDao.disconnection();
