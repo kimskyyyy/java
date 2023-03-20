@@ -47,7 +47,7 @@ public class Quiz01 extends Application {
 		flowL.setPrefSize(100, 30); // 버튼 사이즈
 		flowL.setStyle("-fx-background-color: #A9E2F3"); // 배경 색상
 		flowL.setAlignment(Pos.TOP_LEFT); // 정렬
-		flowL.setPadding(new Insets(20, 0, 20, 0));
+		flowL.setPadding(new Insets(0, 0, 20, 0));
 		
 		
 		// Center
@@ -56,36 +56,30 @@ public class Quiz01 extends Application {
 		flowC.setPrefSize(100, 30); // 버튼 사이즈
 		flowC.setStyle("-fx-background-color: #D0F5A9"); // 배경 색상
 		flowC.setAlignment(Pos.TOP_LEFT); // 정렬
-		flowC.setPadding(new Insets(20, 0, 20, 0));
+		flowC.setPadding(new Insets(0, 0, 20, 0));
 		
 		
 		// Right
-		FlowPane flowR = new FlowPane();
 		Button button1 = new Button("아이디 입력");
 		Button button2 = new Button("비밀번호 입력");
 		Button button3 = new Button("로그인");
-		flowR.getChildren().addAll(button1, button2, button3); // "0열 2행 병합"이 입력된 버튼
-		flowR.setPrefSize(250, 20); // 버튼 사이즈
-		flowR.setStyle("-fx-background-color: #F5F6CE"); // 배경 색상
-		flowR.setAlignment(Pos.CENTER); // 정렬
-		flowR.setPadding(new Insets(20, 0, 20, 0));
-//		grid.add(flow, 0, 3, 3, 1); // 병합
+		
+		button1.setPrefSize(100, 30); // 버튼 사이즈		
+		button2.setPrefSize(100, 30); // 버튼 사이즈	
+		button3.setPrefSize(100, 60); // 버튼 사이즈	
 		
 		GridPane.setConstraints(button1, 0, 0); // 0열, 0행
 		GridPane.setConstraints(button2, 0, 1); // 1열, 0행
 		GridPane.setConstraints(button3, 1, 0); // 2열, 0행
 		
 		GridPane loginGrid = new GridPane();
-		loginGrid.getChildren().addAll(button1, button2, button3);
-		loginGrid.setVgap(0); // 수직 gap
-		loginGrid.setHgap(0); // 수평 gap
+		loginGrid.add(button1, 0, 0);
+		loginGrid.add(button2, 0, 1);
+		loginGrid.add(button3, 1, 0, 1, 2); // 병합
 		loginGrid.setAlignment(Pos.CENTER); // 정렬
 		// new Insets(TOP, RIGHT, BOTTOM, LEFT)
 		loginGrid.setPadding(new Insets(0, 10, 0, 10));
-		loginGrid.setStyle("-fx-background-color: #F5F6CE");
-		
-		
-		
+		loginGrid.setStyle("-fx-background-color: #F5F6CE");		
 		
 		// BOTTOM
 		FlowPane flowB = new FlowPane();
@@ -95,9 +89,6 @@ public class Quiz01 extends Application {
 		flowB.setAlignment(Pos.CENTER); // 정렬
 		flowB.setPadding(new Insets(20, 0, 20, 0));
 		grid.add(flowB, 0, 3, 3, 1); // 병합
-		
-		
-
 		
 		BorderPane border = new BorderPane();		
 		border.setTop(grid);

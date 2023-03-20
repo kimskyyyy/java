@@ -36,6 +36,7 @@ public class FlowPane01 extends Application{
 		}
 		
 		primaryStage.setScene(new Scene(flow, 500, 50));
+		primaryStage.setTitle("FlowPaneEx");
 		primaryStage.show();
 	}
 
