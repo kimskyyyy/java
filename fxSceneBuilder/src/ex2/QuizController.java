@@ -31,23 +31,22 @@ public class QuizController implements Initializable{
 		String dbId = "admin";
 		String dbPw = "1234";
 		
-		if(userId.equals(dbId)) {
-			if(userPw.equals(dbPw)) {
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setHeaderText("알림");
-				alert.setContentText("관리자 로그인 성공");
-				alert.show();
-			}
-
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText("알림");
+		
+		if(userId.isEmpty()) {
+			alert.setContentText("아이디를 입력하세요.");
+		} else if(userPw.isEmpty()) {
+			alert.setContentText("비밀번호를 입력하세요.");
+		} else if(userId.equals(dbId) && userPw.equals(dbPw)) {
+			alert.setContentText("로그인 성공");
 		} else {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText("에러");
-			alert.setContentText("아이디를 확인해주세요");
-			alert.show();
-			
+			alert.setContentText("로그인 실패");
 			id.clear();
 			pw.clear();
 		}		
+		
+		alert.show();
 	}
 
 }
