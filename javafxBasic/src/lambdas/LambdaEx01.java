@@ -4,6 +4,7 @@ interface ILambdaEx01 {
 	void lambda();
 }
 
+// 구현체 따로 만들어서 구현하기
 class LambdaImplEx01 implements ILambdaEx01 {
 
 	@Override

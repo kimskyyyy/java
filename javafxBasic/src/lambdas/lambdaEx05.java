@@ -15,6 +15,7 @@ public class lambdaEx05 {
 //		ex05.lambda("문자열");
 //		ex05.lambda(123);
 		
+		// 소괄호 없는 람다식
 		ex05 = aaaaaa -> {
 			System.out.println("메서드 호출: " + aaaaaa);
 		};

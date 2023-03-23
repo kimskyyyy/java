@@ -76,9 +76,9 @@ public class Quiz01 extends Application {
 		loginGrid.add(button1, 0, 0);
 		loginGrid.add(button2, 0, 1);
 		loginGrid.add(button3, 1, 0, 1, 2); // 병합
-		loginGrid.setAlignment(Pos.CENTER); // 정렬
+		loginGrid.setAlignment(Pos.TOP_LEFT); // 정렬
 		// new Insets(TOP, RIGHT, BOTTOM, LEFT)
-		loginGrid.setPadding(new Insets(0, 10, 0, 10));
+		loginGrid.setPadding(new Insets(10, 10, 0, 10));
 		loginGrid.setStyle("-fx-background-color: #F5F6CE");		
 		
 		// BOTTOM
