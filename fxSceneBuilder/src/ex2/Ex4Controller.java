@@ -11,7 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class QuizController implements Initializable{
+public class Ex4Controller implements Initializable{
 	// @FXML 어노테이션은 lookup 기능을 해줌
 	@FXML TextField id; 
 	@FXML PasswordField pw;
@@ -19,15 +19,29 @@ public class QuizController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		System.out.println(id.textProperty());
+		id.textProperty().addListener((a, before, after) -> {
+//			System.out.println(a);
+			System.out.println("before: " + before);
+			System.out.println("after:" + after);
+			String result = idLengthCheck(after);
+			id.setText(result);
+		});
+		
+		System.out.println(pw.textProperty());
+		pw.textProperty().addListener((a, before, after) -> {
+		if(after.length() > 10) {
+			pw.setText(before);
+		}
+		});
 	}
 	
-	public boolean idLengthCheck(String userId) {
+	public String idLengthCheck(String userId) {
 		//최대 길이 10자리
 		if(userId.length() > 10) {
-			System.out.println("id 최대 길이 10 자리");
-			return false;
+			return userId.substring(0, 10);
 		}
-		return true;
+		return userId;
 	}
 	
 	// 로그인 버튼이 클릭되면 동작함.
@@ -40,10 +54,6 @@ public class QuizController implements Initializable{
 		String dbId = "admin";
 		String dbPw = "1234";
 		
-		boolean result = idLengthCheck(userId);
-		if(result == false) {
-			return;
-		}
 		
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setHeaderText("알림");
