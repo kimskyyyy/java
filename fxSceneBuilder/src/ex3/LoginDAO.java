@@ -105,6 +105,11 @@ public class LoginDAO {
 		}
 	}
 
+	public String loginProc(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

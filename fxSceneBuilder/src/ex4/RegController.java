@@ -19,7 +19,7 @@ public class RegController {
 	@FXML RadioButton manRadio;
 	@FXML RadioButton womanRadio;
 	@FXML ToggleGroup gender;
-	@FXML ComboBox ageCombo;
+	@FXML ComboBox<String> ageCombo;
 	@FXML CheckBox musicCheck;
 	@FXML CheckBox sportCheck;
 	@FXML CheckBox movieCheck;
@@ -36,33 +36,27 @@ public class RegController {
 		  - javafx 테이블에 데이터 입력
 		 */
 		
-		String userName = name.getText();
-		String userId = id.getText();
-		String userPw = pw.getText();
-		String confirmPw = confirm.getText();
-//		String gender = manRadio.getTypeSelector();
-		String gender = manRadio.getAccessibleText();
-		System.out.println(gender);
-		
+	
 		String music = musicCheck.getText();
 		System.out.println(music);
 		
 		RegDTO regDto = new RegDTO();
-		regDto.setName(userName);
-		regDto.setId(userId);
-		regDto.setPw(userPw);
-		regDto.setConfirm(confirmPw);
+		regDto.setName(name.getText());
+		regDto.setId(id.getText());
+		regDto.setPw(pw.getText());
+		regDto.setConfirm(confirm.getText());
 		
 		regService.regProc(regDto);	
 	}
 	
 	// 회원 화면에서 취소 버튼
 	public void regCancelProc() {
-		name.clear();
-		id.clear();
-		pw.clear();	
-		confirm.clear();
-		name.requestFocus();
+//		name.clear();
+//		id.clear();
+//		pw.clear();	
+//		confirm.clear();
+//		name.requestFocus();
+		//화면 끄기로 구성할 예정
 		
 	}
 }
